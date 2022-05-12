@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+.heading {
+  color: purple;
+}
+
+.customInput {
+  border: 1px solid purple;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.btnShow {
+  margin-left: 1rem;
+  border: none;
+  background: purple;
   color: white;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.showList {
+  display: grid;
+  grid-template-columns: 60% auto;
+  margin: 10px 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.showList>div {
+  font-weight: 600;
+}
+
+.actionView {
+  display: flex;
+  align-items: center;
+}
+
+.actionView>div {
+  margin: 0px 5px;
+  font-weight: 600;
+}
+
+.removeIcon {
+  color: red;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.editIcon {
+  color: green;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.userName {
+  color: rgb(184, 11, 184);
+  font-size: 1.2rem;
 }
