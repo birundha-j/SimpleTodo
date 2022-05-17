@@ -1,22 +1,38 @@
 import React from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import {
+  increaseCounter,
+  decreaseCounter,
+} from './Redux/action';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      arrayList: [],
+      arrayList: props.nameList != undefined ? props.nameList : [],
       name: '',
       isActive: false,
-      getId: ''
+      getId: '',
+      // list: {
+      userName: '',
+      age: '',
+      mobile: ''
+      // }
     };
     this.click = this.click.bind(this)
     this.handlaChange = this.handlaChange.bind(this)
     this.overRide = this.overRide.bind(this)
   }
 
-  handlaChange(e) {
+  handlaChange(e, key) {
     let data = e.target.value;
-    this.setState({ name: data });
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        [key]: data
+      }
+    })
   }
 
   click() {
@@ -24,11 +40,20 @@ class App extends React.Component {
       this.setState({
         isActive: false
       })
-      this.state.arrayList[this.state.getId] = this.state.name
+      this.state.arrayList[this.state.getId].userName = this.state.userName
+      this.state.arrayList[this.state.getId].age = this.state.age
+      this.state.arrayList[this.state.getId].mobile = this.state.mobile
+      this.props.onTodoClick([...this.state.arrayList]);
+
     } else {
-      this.setState({ arrayList: [...this.state.arrayList, this.state.name] })
+      let obj = {}
+      obj.userName = this.state.userName
+      obj.age = this.state.age
+      obj.mobile = this.state.mobile
+      this.setState({ arrayList: [...this.state.arrayList, obj] })
+      this.props.onTodoClick([...this.state.arrayList, obj]);
     }
-    this.setState({ name: '' });
+    this.setState({ userName: '', age: '', mobile: '' });
   }
 
   overRide(id, key) {
@@ -37,12 +62,16 @@ class App extends React.Component {
       this.setState({
         isActive: true
       })
-      this.setState({ name: this.state.arrayList[id] });
+      this.setState({
+        userName: this.state.arrayList[id].userName, age: this.state.arrayList[id].age, mobile: this.state.arrayList[id].mobile
+      });
+      this.props.onTodoClick(this.state.arrayList)
     } else {
       let arrayFilter = this.state.arrayList.filter((data, index) => {
         return index !== id
       })
       this.setState({ arrayList: arrayFilter })
+      this.props.onTodoClick(arrayFilter)
     }
   }
 
@@ -51,17 +80,23 @@ class App extends React.Component {
       <div className='container'>
         <div>
           <h1 className='heading'>Todo list</h1>
-          <input className='customInput' placeholder='Enter Name' onChange={this.handlaChange} value={this.state.name} />
-          <button className='btnShow' disabled={this.state.name === '' ? true : false} onClick={this.click}>{this.state.isActive ? 'Update' : 'Add'}</button>
+          <input className='customInput' placeholder='Enter Name' onChange={(e) => this.handlaChange(e, 'userName')} value={this.state.userName} />
+          <input type="number" className='customInput' placeholder='Enter Age' onChange={(e) => this.handlaChange(e, 'age')} value={this.state.age} />
+          <input type="number" className='customInput' placeholder='Enter Mobile' onChange={(e) => this.handlaChange(e, 'mobile')} value={this.state.mobile} />
+          <button className='btnShow' disabled={false} onClick={this.click}>{this.state.isActive ? 'Update' : 'Add'}</button>
           <div>
             {this.state.arrayList.length > 0 && <div className='showList'>
               <div>Name</div>
+              <div>Age</div>
+              <div>Mobile</div>
               <div>Actions</div>
             </div>}
-            {this.state.arrayList.map((data, index) => {
+            {this.state.arrayList?.map((data, index) => {
               return (
-                <div className='showList'>
-                  <div className='userName'>{data}</div>
+                <div className='showList' key={index}>
+                  <div className='userName'>{data.userName}</div>
+                  <div className='userName'>{data.age}</div>
+                  <div className='userName'>{data.mobile}</div>
                   <div className='actionView'>
                     <div className='editIcon' onClick={() => this.overRide(index, 'edit')}>✎</div>
                     <div className='removeIcon' onClick={() => this.overRide(index, 'remove')}>🗑</div>
@@ -75,4 +110,18 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+const mapStateToProps = (state) => {
+  console.log('state:', state);
+  return {
+    nameList: state.counter.list,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTodoClick: (data) => { // handles onTodoClick prop's call here
+      dispatch(increaseCounter(data))
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);

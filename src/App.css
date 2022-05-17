@@ -13,6 +13,7 @@
   padding: 10px;
   border-radius: 5px;
   outline: none;
+  margin-right: 1rem;
 }
 
 .btnShow {
@@ -27,7 +28,7 @@
 
 .showList {
   display: grid;
-  grid-template-columns: 60% auto;
+  grid-template-columns: 25% 25% 25% 25%;
   margin: 10px 0px;
 }
 

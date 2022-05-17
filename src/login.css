@@ -1,0 +1,233 @@
+@keyframes move_wave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.55)
+    }
+
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+
+.waveWrapper {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+
+.waveWrapperInner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    bottom: -1px;
+    background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
+}
+
+.bgTop {
+    /* z-index: 11; */
+    opacity: 3.5;
+}
+
+.bgMiddle {
+    /* z-index: 10; */
+    opacity: 0.75;
+}
+
+.bgBottom {
+    z-index: 5;
+}
+
+.wave {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat no-repeat;
+    background-position: 0 bottom;
+    transform-origin: center bottom;
+}
+
+.waveTop {
+    background-size: 50% 100px;
+    background-image: url('./image/img1.png');
+}
+
+.waveAnimation .waveTop {
+    animation: move-wave 3s;
+    -webkit-animation: move-wave 3s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+.waveMiddle {
+    background-size: 50% 120px;
+    background-image: url('./image/img2.png');
+}
+
+.waveAnimation .waveMiddle {
+    animation: move_wave 10s linear infinite;
+}
+
+.waveBottom {
+    background-size: 50% 100px;
+}
+
+.waveAnimation .waveBottom {
+    animation: move_wave 15s linear infinite;
+}
+
+.loginContainer {
+    background: white;
+    padding: 10px;
+    width: 55%;
+    opacity: 98%;
+    position: relative;
+    animation: mymove duration timing-function delay iteration-count direction fill-mode;
+    animation: mymove 3s;
+    animation-fill-mode: forwards;
+    border-radius: 5px;
+}
+
+@keyframes mymove {
+    from {
+        left: -200px;
+        top: 100px;
+    }
+
+    to {
+        left: 100px;
+        top: 100px;
+        /* background-color: blue; */
+    }
+}
+
+.title {
+    /* color: white */
+    text-align: center;
+}
+
+.mainContent {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.profileImg {
+    text-align: center;
+    height: 18vh;
+}
+
+.profileImg img {
+    height: 100%;
+}
+
+.inputBox {
+    border: 1px solid #86377b;
+    padding: 0.9rem;
+    border-radius: 5px;
+    outline: unset;
+    width: 80%;
+}
+
+.inputContainer {
+    margin: 1.5rem 1rem;
+    text-align: center;
+}
+
+.btnContainer {
+    text-align: center;
+    margin: 0rem 1rem 1rem 1rem;
+}
+
+.btnShow {
+    background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
+    width: 80%;
+    margin-left: 0px;
+}
+
+.forgetTitle {
+    margin-left: 2.2rem;
+    position: relative;
+    bottom: 1.4rem;
+    font-size: 14px;
+    color: #86377b;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footerContainer {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    color: #86377b;
+    margin: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.boxView {
+    padding: 9px;
+    background: #ddc7c7;
+    opacity: 98%;
+    width: 1px;
+    animation: box_wave 10s linear infinite;
+    /* position: relative; */
+    animation: box_wave duration timing-function delay iteration-count direction fill-mode;
+    /* animation: box_wave 3s; */
+    animation-fill-mode: infinite;
+    /* top: 100px; */
+}
+
+.boxView1 {
+    padding: 9px;
+    background: #ddc7c7;
+    opacity: 98%;
+    width: 1px;
+    animation: box_wave 15s infinite;
+    /* position: relative; */
+    animation: box_wave duration timing-function delay iteration-count direction fill-mode;
+    /* animation: box_wave 3s; */
+    animation-fill-mode: infinite;
+    /* top: 100px; */
+}
+
+
+
+@keyframes box_wave {
+    30% {
+        top: 10px;
+        transform: translateX(-55%) translateZ(0) rotate(30deg)
+    }
+
+    50% {
+        top: 70px;
+        transform: translateX(-25%) translateZ(0) rotate(200deg)
+    }
+
+    70% {
+        top: 20px;
+        transform: translateX(-55%) translateZ(0) rotate(30deg)
+    }
+
+    100% {
+        top: 90px;
+        transform: translateX(-70%) translateZ(0) rotate(400deg)
+    }
+
+    from {
+        right: -40rem;
+        top: 200px;
+    }
+
+    to {
+        right: 10rem;
+        top: 100px;
+    }
+}
