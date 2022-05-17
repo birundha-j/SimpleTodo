@@ -3,6 +3,7 @@ import React from 'react';
 import './login.css';
 import Img1 from './image/img1.png';
 import Img2 from './image/img2.png';
+import Sider from './image/sider1.jpg'
 import Profile from './image/download.svg';
 
 
@@ -20,7 +21,6 @@ function Login(props) {
             <div className='mainContent'>
                 <div>
                     <div className='loginContainer'>
-                        {/* <h3 className='title'>Login Your Account</h3> */}
                         <div className='profileImg'>
                             <img src={Profile} />
                         </div>
@@ -40,16 +40,18 @@ function Login(props) {
                         </div>
                     </div>
                 </div>
-                <div>
-                    {[1, 2].map(() => {
+                <div className='right_containe'>
+                    {[1, 2, 8].map(() => {
                         return (
-                            <div style={{ height: '50vh' }}>
+                            <div style={{ height: '25vh' }}>
                                 <div className='boxView' style={{ position: 'relative', top: '200px' }}></div>
-                                <div className='boxView1' style={{ position: 'relative', top: '500px' }}></div>
-
+                                <div className='boxView1' style={{ position: 'relative', top: '700px' }}></div>
                             </div>
                         )
                     })}
+                    {/* <div className='sideImage'>
+                        <img src={Sider} />
+                    </div> */}
 
                     {/* <div style={{ height: '20vh' }}>
                         <div className='boxView1'></div>
