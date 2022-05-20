@@ -28,7 +28,7 @@
     overflow: hidden;
     height: 100%;
     bottom: -1px;
-    background-image: linear-gradient(to top, #53025a 20%, #050311 80%);
+    background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
 }
 
 .bgTop {
@@ -94,18 +94,18 @@
     animation: mymove 3s;
     animation-fill-mode: forwards;
     border-radius: 5px;
-    z-index: 11111;
 }
 
 @keyframes mymove {
     from {
-        left: -500px;
+        left: -200px;
         top: 100px;
     }
 
     to {
         left: 500px;
         top: 100px;
+        /* background-color: blue; */
     }
 }
 
@@ -129,7 +129,7 @@
 }
 
 .inputBox {
-    border: 1px solid #53025a;
+    border: 1px solid #86377b;
     padding: 0.9rem;
     border-radius: 5px;
     outline: unset;
@@ -147,7 +147,7 @@
 }
 
 .btnShow {
-    background-image: linear-gradient(to top, #53025a 20%, #050311 80%);
+    background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
     width: 80%;
     margin-left: 0px;
 }
@@ -157,7 +157,7 @@
     position: relative;
     bottom: 1.4rem;
     font-size: 14px;
-    color: #53025a;
+    color: #86377b;
     font-weight: 600;
     cursor: pointer;
 }
@@ -166,7 +166,7 @@
     display: flex;
     justify-content: center;
     font-size: 14px;
-    color: #53025a;
+    color: #86377b;
     margin: 1rem;
     cursor: pointer;
     font-weight: 600;
@@ -203,22 +203,22 @@
 @keyframes box_wave {
     30% {
         top: 10px;
-        transform: translateX(-55%) translateZ(0) rotate(30deg) scaleY(1)
+        transform: translateX(-55%) translateZ(0) rotate(30deg)
     }
 
     50% {
         top: 70px;
-        transform: translateX(-25%) translateZ(0) rotate(200deg) scaleY(1)
+        transform: translateX(-25%) translateZ(0) rotate(200deg)
     }
 
     70% {
         top: 20px;
-        transform: translateX(-55%) translateZ(0) rotate(30deg) scaleY(1)
+        transform: translateX(-55%) translateZ(0) rotate(30deg)
     }
 
     100% {
         top: 90px;
-        transform: translateX(-70%) translateZ(0) rotate(400deg) scaleY(1)
+        transform: translateX(-70%) translateZ(0) rotate(400deg)
     }
 
     from {
@@ -227,42 +227,7 @@
     }
 
     to {
-        right: 50rem;
-        top: 100px;
-    }
-}
-
-.right_container {
-    opacity: 98%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.sideImage {
-    width: 66%;
-    z-index: 11111;
-    opacity: 98%;
-    position: relative;
-    animation: image duration timing-function delay iteration-count direction fill-mode;
-    animation: image 3s;
-    animation-fill-mode: forwards;
-    border-radius: 5px;
-}
-
-.sideImage img {
-    width: 100%;
-    height: 60vh;
-}
-
-@keyframes image {
-    from {
-        right: -200px;
-        top: 100px;
-    }
-
-    to {
-        right: 100px;
+        right: 10rem;
         top: 100px;
     }
 }
