@@ -54,9 +54,11 @@ class Canvas extends React.Component {
   render() {
     return (
       <div class="container">
-        <canvas id="reactCanvas" style={{ background: `url(${TextImage}) no-repeat` }} width="700" height="700" ref="canvas" onMouseMove={this.onMouseMove} onMouseDown={this.startDraw} onMouseUp={this.endDraw} onMouseOut={this.onMouseOut} />
-        <button type="button" class="btn btn-primary" onClick={this.resetCanvas}>Clear</button>
+        <img src={TextImage} alt=''  for='reactCanvas' width="700" height="700" ref="canvas" onMouseMove={this.onMouseMove} onMouseDown={this.startDraw} onMouseUp={this.endDraw} onMouseOut={this.onMouseOut} />
+        <canvas id="reactCanvas" width="700" height="700" ref="canvas" onMouseMove={this.onMouseMove} onMouseDown={this.startDraw} onMouseUp={this.endDraw} onMouseOut={this.onMouseOut} />
+        {/* <button type="button" class="btn btn-primary" onClick={this.resetCanvas}>Clear</button> */}
         {/* { this.state.rW ? <Metrics {...this.state} /> : null }	       */}
+        {/* style={{ background: `url(${TextImage}) no-repeat` }} */}
       </div>
     );
   }

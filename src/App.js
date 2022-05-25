@@ -17,12 +17,17 @@ class App extends React.Component {
       // list: {
       userName: '',
       age: '',
-      mobile: ''
+      mobile: '',
+      count: true,
+      result: ''
       // }
     };
     this.click = this.click.bind(this)
     this.handlaChange = this.handlaChange.bind(this)
     this.overRide = this.overRide.bind(this)
+    this.callApi=this.callApi.bind(this)
+    this.cutApi=this.cutApi.bind(this)
+    this.textInput = React.createRef(true);
   }
 
   handlaChange(e, key) {
@@ -75,7 +80,32 @@ class App extends React.Component {
     }
   }
 
+  callApi(){
+    this.setState({count: true})
+    setTimeout(()=>{
+    console.log(this.state.count, "arrayList")
+
+      if (this.state.count) {
+        const controller = new AbortController();
+        fetch("https://pokeapi.co/api/v2/pokemon/12", {
+          signal: controller.signal
+        })
+          .then((res) => res.json())
+          .then((data) => this.setState({result: data}))
+          .catch((err) => {
+            // Handle error ..
+          });
+      }
+    }, 5000)
+  }
+
+  cutApi(){
+    this.setState({count: false})
+    this.setState({result: ''})
+  }
+
   render() {
+    console.log(this.state.result, "arrayList")
     return (
       <div className='container'>
         <div>
@@ -93,7 +123,7 @@ class App extends React.Component {
             </div>}
             {this.state.arrayList?.map((data, index) => {
               return (
-                <div className='showList' key={index}>
+                <div className='showList'>
                   <div className='userName'>{data.userName}</div>
                   <div className='userName'>{data.age}</div>
                   <div className='userName'>{data.mobile}</div>
@@ -105,6 +135,10 @@ class App extends React.Component {
               )
             })}
           </div>
+        </div>
+        <div>
+          <button onClick={this.callApi}>call api</button>
+          <button onClick={this.cutApi}>cut api</button>
         </div>
       </div>
     );

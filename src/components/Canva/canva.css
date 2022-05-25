@@ -1,13 +1,15 @@
 div {
-    position: absolute;
+    /* position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100vh; */
   }
   
   #reactCanvas {
     border: 1px solid #757575;
     margin:10px;
     /* background-image: url("https://f1.media.brightcove.com/8/234507581/234507581_5106927173001_5106903722001-vs.jpg?pubId=234507581&videoId=5106903722001"); */
+    /* position: absolute; */
+    left: 0;
   }
   
   .btn, .list-group {
